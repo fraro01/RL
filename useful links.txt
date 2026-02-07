@@ -1,0 +1,12 @@
+
+https://www.projectpro.io/article/reinforcement-learning-projects-ideas-for-beginners-with-code/521
+
+https://gymnasium.farama.org/
+
+https://github.com/edwardhdlu/q-trader?tab=readme-ov-file
+
+https://github.com/AminHP/gym-anytrading
+
+https://medium.com/ibm-data-ai/reinforcement-learning-the-business-use-case-part-2-c175740999
+
+https://github.com/tensortrade-org/tensortrade
