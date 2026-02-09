@@ -176,7 +176,7 @@ class TradingEnv(gym.Env): #inheritance from the Gym parent class
 
 """"
 example of how to use this environment:
-env = TradingEnv("AAPL", "1d", sliding_window=10, start_date="2020-01-01", end_date="2021-01-01")
+env = TradingEnv(ticker="AAPL", granularity="1d", sliding_window=7, start_date="2020-01-01", end_date="2021-01-01", initial_cash=10000, initial_share=5)
 obs, info = env.reset()
 action = env.action_space.sample()  # es. 0=buy,1=hold,2=sell
 obs, reward, done, truncated, info = env.step(action)
