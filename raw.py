@@ -19,8 +19,11 @@ data = yf.download(
     progress=False
     )
 
+
 #testing list
 x = [1,1,2,2,0,0,1,2,1,1,1,1,0,0,2,2,1,1,2,0,1,2,0,1,2,0,1,2,0]
+y = [1 for _ in range(3-1)]
+
 
 #function to display
 def show_data_with_actions(data, deeds):
@@ -66,4 +69,4 @@ def show_data_with_actions(data, deeds):
     plt.ylabel('Closing Price [$]')
     plt.legend()
     plt.grid(True)
-    plt.show()
+    plt.show()   

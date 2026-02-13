@@ -168,19 +168,23 @@ class TradingEnv(gym.Env): #inheritance from the Gym parent class
         
     #for showing the actions taken in relation with the data
     def show_data_with_actions(self, deeds):
+        #initial padding, since in the first sliding_window-th prices we don't take any action
+        padding = [1 for _ in range(self.sliding_window)] #we pad them as holding
+        #padded actions
+        z = padding + deeds
         #dimensions
         plt.figure(figsize=(10, 5))
         #Plot of the closing prices
         plt.plot(self.plot_data.index, self.plot_data['Close'])
-        #allign deeds to the first len(deeds) timestamps
-        deeds = np.array(deeds) #conversion in Numpy, in order to usee boolean masks
-        aligned_index = self.plot_data.index[:len(deeds)] #take only the first len(deeds) elements
-        aligned_price = self.plot_data['Close'].values[:len(deeds)] #same as above
+        #allign deeds to the first len(z) timestamps
+        z = np.array(z) #conversion in Numpy, in order to usee boolean masks
+        aligned_index = self.plot_data.index[:len(z)] #take only the first len(z) elements
+        aligned_price = self.plot_data['Close'].values[:len(z)] #same as above
         #Masks
         #boleean arrays
-        mask_red = (deeds == 0)
-        mask_green = (deeds == 2)
-        #Scatter red (deeds == 0)
+        mask_red = (z == 0)
+        mask_green = (z == 2)
+        #Scatter red (z == 0)
         plt.scatter(
             aligned_index[mask_red], #take only v==0 dates
             aligned_price[mask_red], #take related prices
@@ -189,7 +193,7 @@ class TradingEnv(gym.Env): #inheritance from the Gym parent class
             s=20, #dimensions of the markers
             zorder=0 #sovraposition order
         )
-        #Scatter green (deeds == 2)
+        #Scatter green (z == 2)
         plt.scatter(
             aligned_index[mask_green], #same as before
             aligned_price[mask_green],
